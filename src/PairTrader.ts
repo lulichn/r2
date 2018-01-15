@@ -97,7 +97,7 @@ export default class PairTrader extends EventEmitter {
   }
 
   private async sendOrder(quote: Quote, targetVolume: number, orderType: OrderType): Promise<OrderImpl> {
-    this.log.info(t`SendingOrderTargettingQuote`, quote);
+    this.log.info(t`SendingOrderTargettingQuote`, quote, targetVolume);
     const brokerConfig = findBrokerConfig(this.configStore.config, quote.broker);
     const { cashMarginType, leverageLevel } = brokerConfig;
     const orderSide = quote.side === QuoteSide.Ask ? OrderSide.Buy : OrderSide.Sell;
